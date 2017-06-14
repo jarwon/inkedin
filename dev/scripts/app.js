@@ -134,14 +134,16 @@ class App extends React.Component {
 		return (
 			<div className="wrapper">
 				
-				
 					<section className="title">
-						<h1>inkedin</h1>
-						<h3>submit and find tattoo artists in the city</h3>
+						<div className="item--css-background-clip">
+						    <h1>inkedin</h1>
+						<h2>submit and find tattoo artists in the city</h2>
+						</div>
 					</section>
 
-					<h2>submit an artist</h2>
+
 					<form onSubmit={this.handleSubmit}>
+						<h2>submit an artist</h2>
 						<section className="textForm">
 							<input name="name" type="text" placeholder="artist name" onChange={this.handleChange}/>
 							<input name="instagram" type="text" placeholder="instagram" onChange={this.handleChange}/>
@@ -228,9 +230,11 @@ class App extends React.Component {
 				
 					<StyleChecklist toggleFilter={this.toggleFilter} />
 					<FilteredList artists={this.state.artists} filters={this.state.filters} />
-					<ArtistsList artists={this.state.artists} />
 				</div>
 		)
+
+//<ArtistsList artists={this.state.artists} />
+
 	}
 	componentDidMount(){
 		dbRef.on("value", (snapshot) => {
@@ -247,7 +251,7 @@ class App extends React.Component {
 class StyleChecklist extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="myStyleChecklist">
 				<h2>my style checklist</h2>
 				<section className="filterMyList">
 		
@@ -300,23 +304,23 @@ class StyleChecklist extends React.Component {
 }
 
 //displaying first component of artist listings
-class ArtistsList extends React.Component {
-	render() {
-		console.log(this.props.artists)
-		console.log(Array.isArray(this.props.artists))
-		return (
-			<ul className="artistInfo">
-				{
-					this.props.artists.map((artist, index) => { 
-						return (
-							<ArtistListItem artist={artist} key={index}/>
-						)
-					})
-				}
-			</ul>
-		)
-	}
-}
+// class ArtistsList extends React.Component {
+// 	render() {
+// 		console.log(this.props.artists)
+// 		console.log(Array.isArray(this.props.artists))
+// 		return (
+// 			<ul className="artistInfo">
+// 				{
+// 					this.props.artists.map((artist, index) => { 
+// 						return (
+// 							<ArtistListItem artist={artist} key={index}/>
+// 						)
+// 					})
+// 				}
+// 			</ul>
+// 		)
+// 	}
+// }
 
 class ArtistListItem extends React.Component {
 	render () {
@@ -325,6 +329,7 @@ class ArtistListItem extends React.Component {
 				<p><span>Name</span> {this.props.artist.name}</p>
 				<p><span>Instagram</span> {this.props.artist.instagram}</p>
 				<p><span>Shop</span> {this.props.artist.shop}</p>
+				<p><span>Neighbourhood</span> {this.props.artist.neighbourhood}</p>
 				<p><span>Style</span>
 					{ this.props.artist.blackwork === true ? " Blackwork" : null }
 					{ this.props.artist.dotworkorsingleneedle === true ? " Dot Work or Single Needle" : null }
@@ -368,7 +373,7 @@ class FilteredList extends React.Component {
 		})
 
 		return (
-			<div>
+			<div className="filteredList">
 				<h2>my filtered list</h2>
 				<ul className="artistInfoFiltered">
 					{ filteredList.map((artist, index) => <ArtistListItem key={index} artist={artist} />) }
