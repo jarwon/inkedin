@@ -137,6 +137,7 @@ class App extends React.Component {
 				
 					<section className="title">
 						<h1>inkedin</h1>
+						<h3>submit and find tattoo artists in the city</h3>
 					</section>
 
 					<h2>submit an artist</h2>
