@@ -133,18 +133,120 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 html {
-  background-color: #000;
-  color: #fff; }
+  background-color: #fff;
+  color: #000;
+  font-family: "Jaldi", sans-serif; }
+
+.wrapper {
+  width: 1280px;
+  margin: 0 auto; }
+
+.title {
+  height: 100vh;
+  text-align: center;
+  font-size: 100px;
+  text-shadow: -4px 5px 0px rgba(176, 176, 176, 0.65); }
 
 input {
-  display: inline-block; }
+  margin: 20px;
+  background-color: #fff;
+  border: 2px solid RGBA(41, 221, 253, 1);
+  padding: 20px;
+  text-transform: uppercase;
+  font-size: 20px; }
 
-input[type=checkbox] {
-  margin: 10px 3px 10px 20px; }
+input[type=text] {
+  width: 300px; }
 
-li {
-  margin: 10px 0; }
+input[type=submit] {
+  width: 400px;
+  display: block;
+  margin: 0 auto; }
+
+form {
+  height: 100vh; }
+
+.textForm {
+  display: flex; }
+
+.checkboxForm {
+  display: flex;
+  flex-wrap: wrap;
+  text-transform: uppercase;
+  justify-content: space-between;
+  margin: 0 0 50px 0; }
+  .checkboxForm input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    margin: 0; }
+    .checkboxForm input[type=checkbox] + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      margin: 20px; }
+    .checkboxForm input[type=checkbox] + label:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 20px;
+      height: 20px;
+      background: RGBA(41, 221, 253, 1); }
+    .checkboxForm input[type=checkbox]:hover + label:before {
+      background: RGBA(41, 221, 253, 1); }
+    .checkboxForm input[type=checkbox]:focus + label:before {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12); }
+    .checkboxForm input[type=checkbox]:checked + label:before {
+      background: RGBA(41, 221, 253, 1); }
+    .checkboxForm input[type=checkbox]:disabled + label {
+      color: RGBA(41, 221, 253, 1);
+      cursor: auto; }
+    .checkboxForm input[type=checkbox]:disabled + label:before {
+      box-shadow: none;
+      background: #ddd; }
+    .checkboxForm input[type=checkbox]:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 9px;
+      background: white;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+      transform: rotate(45deg); }
 
 p {
   margin: 0;
   padding: 0; }
+
+.filterMyList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; }
+  .filterMyList input {
+    margin: 10px 10px 10px 45px; }
+  .filterMyList label {
+    font-size: 20px;
+    text-transform: uppercase; }
+
+.artistInfo, .artistInfoFiltered {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .artistInfo li, .artistInfoFiltered li {
+    background-color: RGBA(225, 255, 254, 1);
+    margin: 20px;
+    width: 350px;
+    padding: 20px; }
+    .artistInfo li span, .artistInfoFiltered li span {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-right: 5px; }
+    .artistInfo li p, .artistInfoFiltered li p {
+      display: block;
+      font-size: 20px;
+      line-height: 1.2; }
