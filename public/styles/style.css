@@ -133,8 +133,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 html {
-  background-color: #fff;
-  color: #000;
+  background-color: #530B24;
+  color: #fff;
   font-family: "Jaldi", sans-serif; }
 
 .wrapper {
@@ -143,122 +143,144 @@ html {
 
 .title {
   height: 100vh;
-  text-align: center; }
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
   .title h1 {
-    font-size: 300px;
-    margin: 0; }
-  .title p {
-    font-size: 30px; }
+    font-size: 20vw;
+    margin: 0;
+    line-height: 0.8; }
 
 h2 {
-  font-size: 50px;
-  margin: 0; }
+  font-size: 3vw;
+  margin: 0;
+  display: block; }
 
-.item--css-background-clip {
-  background: url("../assets/titlebg.png") repeat;
+.title-clip {
+  background: linear-gradient(RGBA(157, 206, 203, 0.7), RGBA(157, 206, 203, 0.7)), url("../../public/assets/headerbg02.png") no-repeat;
+  background-size: 100%;
+  background-position: 0px 68%;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text; }
 
 input {
-  margin: 20px;
-  background-color: #fff;
-  border: 2px solid RGBA(41, 221, 253, 1);
-  padding: 20px;
+  margin: 5px;
+  background-color: #530B24;
+  border: 3px solid #fff;
+  color: #9DCECB;
+  padding: 10px;
   text-transform: uppercase;
-  font-size: 20px; }
+  font-size: 22px; }
+  input:focus {
+    outline: transparent;
+    border: 3px solid #9DCECB; }
+  input::placeholder {
+    color: #fff; }
 
 input[type=text] {
   width: 300px; }
 
 input[type=submit] {
-  width: 400px;
-  display: block;
-  margin: 0 auto; }
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  transition: 0.5s; }
+  input[type=submit]:hover {
+    color: #9DCECB; }
 
-form, .filteredList, .myStyleChecklist {
-  margin: 100px 0 0 0; }
+form, .stylechecklist-filteredlist, .stylechecklist {
+  margin: 100px 0 0 0;
+  padding: 50px; }
 
-.textForm {
+.form-container {
   display: flex; }
 
-.checkboxForm {
+.form-text {
   display: flex;
-  flex-wrap: wrap;
-  text-transform: uppercase;
-  justify-content: space-between;
-  margin: 0 0 50px 0; }
-  .checkboxForm input[type=checkbox] {
-    position: absolute;
-    opacity: 0;
-    margin: 0; }
-    .checkboxForm input[type=checkbox] + label {
-      position: relative;
-      cursor: pointer;
-      padding: 0;
-      margin: 20px; }
-    .checkboxForm input[type=checkbox] + label:before {
-      content: '';
-      margin-right: 10px;
-      display: inline-block;
-      vertical-align: text-top;
-      width: 20px;
-      height: 20px;
-      background: RGBA(41, 221, 253, 1); }
-    .checkboxForm input[type=checkbox]:hover + label:before {
-      background: RGBA(41, 221, 253, 1); }
-    .checkboxForm input[type=checkbox]:focus + label:before {
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12); }
-    .checkboxForm input[type=checkbox]:checked + label:before {
-      background: RGBA(41, 221, 253, 1); }
-    .checkboxForm input[type=checkbox]:disabled + label {
-      color: RGBA(41, 221, 253, 1);
-      cursor: auto; }
-    .checkboxForm input[type=checkbox]:disabled + label:before {
-      box-shadow: none;
-      background: #ddd; }
-    .checkboxForm input[type=checkbox]:checked + label:after {
-      content: '';
-      position: absolute;
-      left: 5px;
-      top: 9px;
-      background: white;
-      width: 2px;
-      height: 2px;
-      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
-      transform: rotate(45deg); }
+  flex-direction: column;
+  width: 30%; }
 
-p {
-  margin: 0;
-  padding: 0; }
+.form-checklist--container {
+  display: flex; }
 
-.filterMyList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; }
-  .filterMyList input {
-    margin: 10px 10px 10px 45px; }
-  .filterMyList label {
-    font-size: 20px;
-    text-transform: uppercase; }
-
-.artistInfo, .artistInfoFiltered {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; }
-  .artistInfo li, .artistInfoFiltered li {
-    background-color: RGBA(225, 255, 254, 1);
-    margin: 20px;
-    width: 350px;
-    padding: 20px; }
-    .artistInfo li span, .artistInfoFiltered li span {
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-right: 5px; }
-    .artistInfo li p, .artistInfoFiltered li p {
-      display: block;
+.form-checklist {
+  display: flex; }
+  .form-checklist .form-checklist--checkbox {
+    margin: 0 0 50px 0; }
+    .form-checklist .form-checklist--checkbox .form-checklist--label {
+      margin: 5px 0; }
+      .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox] {
+        position: absolute;
+        opacity: 0;
+        margin: 0; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox] + label {
+          position: relative;
+          cursor: pointer;
+          padding: 0;
+          margin: 20px;
+          font-size: 20px; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox] + label:before {
+          content: "";
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: text-top;
+          width: 30px;
+          height: 30px;
+          background: #9DCECB; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox]:hover + label:before {
+          background: #9DCECB; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox]:focus + label:before {
+          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12); }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox]:checked + label:before {
+          background: #9DCECB; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox]:disabled + label {
+          color: #9DCECB;
+          cursor: auto; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox]:disabled + label:before {
+          box-shadow: none;
+          background: #ddd; }
+        .form-checklist .form-checklist--checkbox .form-checklist--label input[type=checkbox]:checked + label:after {
+          content: '';
+          position: absolute;
+          left: 10px;
+          top: 15px;
+          background: white;
+          width: 2px;
+          height: 2px;
+          box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+          transform: rotate(45deg); }
+  .form-checklist p {
+    margin: 0;
+    padding: 0; }
+  .form-checklist .stylechecklist-filteredlist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+    .form-checklist .stylechecklist-filteredlist input {
+      margin: 10px 10px 10px 45px; }
+    .form-checklist .stylechecklist-filteredlist label {
       font-size: 20px;
-      line-height: 1.2; }
+      text-transform: uppercase; }
+  .form-checklist .stylechecklist-filteredlist, .form-checklist .stylechecklist-filteredlist--artistlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    .form-checklist .stylechecklist-filteredlist li, .form-checklist .stylechecklist-filteredlist--artistlist li {
+      background-color: #6EC7CE;
+      margin: 20px;
+      width: 350px;
+      padding: 20px; }
+      .form-checklist .stylechecklist-filteredlist li span, .form-checklist .stylechecklist-filteredlist--artistlist li span {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-right: 5px; }
+      .form-checklist .stylechecklist-filteredlist li p, .form-checklist .stylechecklist-filteredlist--artistlist li p {
+        display: block;
+        font-size: 20px;
+        line-height: 1.2; }

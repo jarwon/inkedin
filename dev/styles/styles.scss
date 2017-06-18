@@ -6,8 +6,8 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 html {
-	background-color: #fff;
-	color: #000;
+	background-color: #530B24;
+	color: #fff;
 	font-family: "Jaldi", sans-serif;
 }
 
@@ -20,34 +20,52 @@ html {
 .title {
 	height: 100vh;
 	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	h1 {
-		font-size: 300px;
+		font-size: 20vw;
 		margin: 0;
-	}
-	p {
-		font-size: 30px;
+		line-height: 0.8;
 	}
 }
 
 h2 {
-	font-size: 50px;
+	font-size: 3vw;
 	margin: 0;
+	display: block;
 }
 
 
-.item--css-background-clip {
-  background: url("../assets/titlebg.png") repeat;
+.title-clip {
+  background: 
+  linear-gradient(
+    RGBA(157, 206, 203, 0.7),
+    RGBA(157, 206, 203, 0.7)
+  ),
+  url("../../public/assets/headerbg02.png") no-repeat;
+
+  background-size: 100%;
+  background-position: 0px 68%;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
 
 input {
-	margin: 20px;
-	background-color: #fff;
-	border: 2px solid RGBA(41, 221, 253, 1.00);
-	padding: 20px;
+	margin: 5px;
+	background-color: #530B24;
+	border: 3px solid #fff;
+	color: #9DCECB;
+	padding: 10px;
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 22px;
+	&:focus {
+		outline: transparent;
+		border: 3px solid #9DCECB;
+	}
+	&::placeholder {
+		color: #fff;
+	}
 }
 
 input[type=text] {
@@ -55,103 +73,126 @@ input[type=text] {
 }
 
 input[type=submit] {
-	width: 400px;
-	display: block;
+	width: 300px;
+	height: 300px;
 	margin: 0 auto;
+	padding: 20px;
+	transition: 0.5s;
+	&:hover {
+		color: #9DCECB;
+	}
 }
 
-
-form, .filteredList, .myStyleChecklist {
+form, .stylechecklist-filteredlist, .stylechecklist {
 	margin: 100px 0 0 0;
+	padding: 50px;
 }
 
-.textForm {
+
+
+.form-container {
 	display: flex;
 }
-	.checkboxForm {
-		display: flex;
-		flex-wrap: wrap;
-		text-transform: uppercase;
-		justify-content: space-between;
+
+.form-text {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+}
+.form-checklist--container {
+	display: flex;
+}
+.form-checklist {
+	display: flex;
+	.form-checklist--checkbox {
+		// display: flex;
+		// flex-direction: column;
+		// flex-wrap: wrap;
+		// text-transform: uppercase;
+		// justify-content: space-between;
 		margin: 0 0 50px 0;
+		.form-checklist--label {
+			margin: 5px 0;
 		input[type=checkbox] {
-			  position: absolute; // take it out of document flow
-			  opacity: 0; // hide it
-			  margin: 0;
+			position: absolute; // take it out of document flow
+			opacity: 0; // hide it
+			margin: 0;
 
-			  & + label {
-			    position: relative;
-			    cursor: pointer;
-			    padding: 0;
-			    margin: 20px;
-			  }
+			& + label {
+			position: relative;
+			cursor: pointer;
+			padding: 0;
+			margin: 20px;
+			font-size: 20px;
+			}
 
-			  // Box.
-			  & + label:before {
-			    content: '';
-			    margin-right: 10px;
-			    display: inline-block;
-			    vertical-align: text-top;
-			    width: 20px;
-			    height: 20px;
-			    background: RGBA(41, 221, 253, 1.00);
-			  }
+			// Box.
+			& + label:before {
+			content: "";
+			margin-right: 10px;
+			display: inline-block;
+			vertical-align: text-top;
+			width: 30px;
+			height: 30px;
+			background: #9DCECB;
+			}
 
-			  // Box hover
-			  &:hover + label:before {
-			    background: RGBA(41, 221, 253, 1.00);
-			  }
-			  
-			  // Box focus
-			  &:focus + label:before {
-			    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-			  }
+			// Box hover
+			&:hover + label:before {
+			background: #9DCECB;
+			}
 
-			  // Box checked
-			  &:checked + label:before {
-			    background: RGBA(41, 221, 253, 1.00);
-			  }
-			  
-			  // Disabled state label.
-			  &:disabled + label {
-			    color: RGBA(41, 221, 253, 1.00);
-			    cursor: auto;
-			  }
+			// Box focus
+			&:focus + label:before {
+			box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+			}
 
-			  // Disabled box.
-			  &:disabled + label:before {
-			    box-shadow: none;
-			    background: #ddd;
-			  }
+			// Box checked
+			&:checked + label:before {
+			background: #9DCECB;
+			}
 
-			  // Checkmark. Could be replaced with an image
-			  &:checked + label:after {
-			    content: '';
-			    position: absolute;
-			    left: 5px;
-			    top: 9px;
-			    background: white;
-			    width: 2px;
-			    height: 2px;
-			    box-shadow: 
-			      2px 0 0 white,
-			      4px 0 0 white,
-			      4px -2px 0 white,
-			      4px -4px 0 white,
-			      4px -6px 0 white,
-			      4px -8px 0 white;
-			    transform: rotate(45deg);
-			  }
+			// Disabled state label.
+			&:disabled + label {
+			color: #9DCECB;
+			cursor: auto;
+			}
+
+			// Disabled box.
+			&:disabled + label:before {
+			box-shadow: none;
+			background: #ddd;
+			}
+
+			// Checkmark. Could be replaced with an image
+			&:checked + label:after {
+			content: '';
+			position: absolute;
+			left: 10px;
+			top: 15px;
+			background: white;
+			width: 2px;
+			height: 2px;
+			box-shadow: 
+			  2px 0 0 white,
+			  4px 0 0 white,
+			  4px -2px 0 white,
+			  4px -4px 0 white,
+			  4px -6px 0 white,
+			  4px -8px 0 white;
+			transform: rotate(45deg);
 			}
 		}
+	}
+}
+
 
 p {
 	margin: 0;
 	padding: 0;
 }
 
-
-.filterMyList {
+.stylechecklist-filteredlist {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -165,7 +206,7 @@ p {
 	}
 }
 
-.artistInfo, .artistInfoFiltered {
+.stylechecklist-filteredlist, .stylechecklist-filteredlist--artistlist {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -173,7 +214,7 @@ p {
 	flex-wrap: wrap;
 	justify-content: center;
 	li {
-		background-color: RGBA(225, 255, 254, 1.00);
+		background-color: #6EC7CE;
 		margin: 20px;
 		width: 350px;
 		padding: 20px;
@@ -188,4 +229,5 @@ p {
 		line-height: 1.2;
 		}
 	}
+}
 }
