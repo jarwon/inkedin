@@ -1,0 +1,31 @@
+[debug] [2017-06-20T16:49:02.679Z] ----------------------------------------------------------------------
+[debug] [2017-06-20T16:49:02.682Z] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-06-20T16:49:02.682Z] CLI Version:  3.9.1
+[debug] [2017-06-20T16:49:02.682Z] Platform:     darwin
+[debug] [2017-06-20T16:49:02.682Z] Node Version: v6.10.3
+[debug] [2017-06-20T16:49:02.683Z] Time:         Tue Jun 20 2017 12:49:02 GMT-0400 (EDT)
+[debug] [2017-06-20T16:49:02.683Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-20T16:49:02.698Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-20T16:49:02.698Z] > authorizing via signed-in user
+[debug] [2017-06-20T16:49:02.701Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-06-20T16:49:02.701Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/fLQ-QV8iHLEic5kKV0xjK2jMwSRTvqkdHaXe1OvOP3E',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Jun 20 2017 12:49:02 GMT-0400 (EDT)
+[debug] [2017-06-20T16:49:02.876Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-20T16:49:02.879Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/event-app-5104b  
+ Tue Jun 20 2017 12:49:02 GMT-0400 (EDT)
+[debug] [2017-06-20T16:49:03.443Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-20T16:49:03.445Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/event-app-5104b/tokens  
+ Tue Jun 20 2017 12:49:03 GMT-0400 (EDT)
+[debug] [2017-06-20T16:49:04.070Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'event-app-5104b'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2017-06-20T16:49:39.803Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/event-app-5104b/uploads/-Kn5P47APa6n3zEue9el?fileCount=29258&message=  
+ Tue Jun 20 2017 12:49:39 GMT-0400 (EDT)

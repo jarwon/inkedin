@@ -1,12 +1,3 @@
-//create a form so it can save info on firebase
-//get request of list
-//render list with react
-//creating admin login and regular user login
-//if not admin, access read only
-//add favourite button under a user 
-//tattoo list - users{ [tattoo place ids] }
-
-
 import React from "react";
 import ReactDOM from "react-dom";
 import {ajax} from "jquery";
@@ -52,13 +43,16 @@ class App extends React.Component {
 			tribal: false,
 			watercolour: false,
 			artists: [],
-			filters: []
+			filters: [],
+			submitted: false
 		}
 		//binding methods to main constructor
 		this.handleChange = this.handleChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.toggleFilter = this.toggleFilter.bind(this)
 	}
+
+
 	handleChange(e) {
 		if  (e.target.name == "style" && this.state.style != "") {
 			var style =	e.target.getAttribute("id")
@@ -108,7 +102,8 @@ class App extends React.Component {
 			instagram: instagram,
 			shop: shop,
 			neighbourhood: neighbourhood,
-			style: style
+			style: style,
+			submitted: !this.state.submitted
 		})
 	}
 
@@ -129,109 +124,121 @@ class App extends React.Component {
 		}
 		this.setState(currentState);
 	}
+
+
 	render() {
+		let submit;
+		if (this.state.submitted) {
+			submit = (
+				<div>
+					<input type="submit" value="submit artist"/>
+					<p> Thank you for submitting! </p>
+				</div>
+			)
+		} else {
+			submit = (
+				<div>
+					<input type="submit" value="submit artist"/>
+				</div>			
+			)
+		}
+
 		return (
 			<div className="wrapper">
 				<div id="fullpage">
-					
+
 					<div className="section title">
-						<div className="title-clip">
-						    <h1>inkedin</h1>
-							<h2>submit and find tattoo artists in the city</h2>
-						</div>
-						<div className="title-mobile">
-						    <h1>inkedin</h1>
-							<h2>submit and find tattoo artists in the city</h2>
-						</div>
-						<a href="#secondPage"><i className="fa fa-arrow-circle-down fa-3x"></i></a>
+						<h1>inkedin</h1>
+						<p><a href="#secondPage">submit an artist</a></p>
+						<p><a href="#thirdPage">find an artist</a></p>
+
+						<i className="fa fa-arrow-circle-down fa-3x"></i>
 					</div>
 
-					<form onSubmit={this.handleSubmit} className="section">
+					<div className="section form">
+						<form onSubmit={this.handleSubmit}>
+							<div className="form-instructions">
+								<h2>submit an artist</h2>
+							</div>
+							<section className="form-container">
+								<section className="form-text">
+									<input name="name" type="text" placeholder="artist name" onChange={this.handleChange}/>
+									<input name="instagram" type="text" placeholder="instagram" onChange={this.handleChange}/>
+									<input name="shop" type="text" placeholder="shop" onChange={this.handleChange}/>
+									<input name="neighbourhood" type="text" placeholder="neighbourhood" onChange={this.handleChange}/>
+								</section>
+								<h3 className="form-container--media">select their style(s)</h3>
+								<section className="form-checklist">
+									<h3>select their style(s)</h3>
+	
+								<section className="form-checklist--container">
+									<section className="form-checklist--checkbox">
 
-					<div className="form-instructions">
-						<h2>submit an artist</h2>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="blackwork" name="style" value={this.state.blackwork} onChange={this.handleChange}/>
+											<label htmlFor="blackwork">Blackwork</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="dotworkorsingleneedle" name="style" value={this.state.dotworkorsingleneedle} onChange={this.handleChange}/>
+											<label htmlFor="dotworkorsingleneedle">Dotwork or Single Needle</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="geometric" name="style" value={this.state.geometric} onChange={this.handleChange}/>
+											<label htmlFor="geometric">Geometric</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="handpoke" name="style" value={this.state.handpoke} onChange={this.handleChange}/>
+											<label htmlFor="handpoke">Handpoke</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="ignorant" name="style" value={this.state.ignorant} onChange={this.handleChange}/>
+											<label htmlFor="ignorant">Ignorant</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="japanese" name="style" value={this.state.japanese} onChange={this.handleChange}/>
+											<label htmlFor="japanese">Japanese</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="linework" name="style" value={this.state.linework} onChange={this.handleChange}/>
+											<label htmlFor="linework">Linework</label>
+										</div>
+									</section>
+									<section className="form-checklist--checkbox">
+										<div className="form-checklist--label">
+											<input type="checkbox" id="neotraditional" name="style" value={this.state.neotraditional} onChange={this.handleChange}/>
+											<label htmlFor="neotraditional">Neo-Traditional</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="newschool" name="style" value={this.state.newschool} onChange={this.handleChange}/>
+											<label htmlFor="newschool">New-School</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="realism" name="style" value={this.state.realism} onChange={this.handleChange}/>
+											<label htmlFor="realism">Realism</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="script" name="style" value={this.state.script} onChange={this.handleChange}/>
+											<label htmlFor="script">Script</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="traditional" name="style" value={this.state.traditional} onChange={this.handleChange}/>
+											<label htmlFor="traditional">Traditional</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="tribal" name="style" value={this.state.tribal} onChange={this.handleChange}/>
+											<label htmlFor="tribal">Tribal</label>
+										</div>
+										<div className="form-checklist--label">
+											<input type="checkbox" id="watercolour" name="style" value={this.state.watercolour} onChange={this.handleChange}/>
+											<label htmlFor="watercolour">Watercolour</label>
+										</div>
+									</section>
+								</section>
+						</section>
+							{submit}
+						</section>
+						</form>
 					</div>
-
-					<section className="form-container">
-						<section className="form-text">
-							<input name="name" type="text" placeholder="artist name" onChange={this.handleChange}/>
-							<input name="instagram" type="text" placeholder="instagram" onChange={this.handleChange}/>
-							<input name="shop" type="text" placeholder="shop" onChange={this.handleChange}/>
-							<input name="neighbourhood" type="text" placeholder="neighbourhood" onChange={this.handleChange}/>
-						</section>
-							<h3 className="form-container--media">select their style(s)</h3>
-						<section className="form-checklist">
-							<h3>select their style(s)</h3>
-
-							<section className="form-checklist--container">
-								<section className="form-checklist--checkbox">
-
-									<div className="form-checklist--label">
-										<input type="checkbox" id="blackwork" name="style" value={this.state.blackwork} onChange={this.handleChange}/>
-										<label htmlFor="blackwork">Blackwork</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="dotworkorsingleneedle" name="style" value={this.state.dotworkorsingleneedle} onChange={this.handleChange}/>
-										<label htmlFor="dotworkorsingleneedle">Dotwork or Single Needle</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="geometric" name="style" value={this.state.geometric} onChange={this.handleChange}/>
-										<label htmlFor="geometric">Geometric</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="handpoke" name="style" value={this.state.handpoke} onChange={this.handleChange}/>
-										<label htmlFor="handpoke">Handpoke</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="ignorant" name="style" value={this.state.ignorant} onChange={this.handleChange}/>
-										<label htmlFor="ignorant">Ignorant</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="japanese" name="style" value={this.state.japanese} onChange={this.handleChange}/>
-										<label htmlFor="japanese">Japanese</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="linework" name="style" value={this.state.linework} onChange={this.handleChange}/>
-										<label htmlFor="linework">Linework</label>
-									</div>
-
-								</section>
-
-								<section className="form-checklist--checkbox">
-									<div className="form-checklist--label">
-										<input type="checkbox" id="neotraditional" name="style" value={this.state.neotraditional} onChange={this.handleChange}/>
-										<label htmlFor="neotraditional">Neo-Traditional</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="newschool" name="style" value={this.state.newschool} onChange={this.handleChange}/>
-										<label htmlFor="newschool">New-School</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="realism" name="style" value={this.state.realism} onChange={this.handleChange}/>
-										<label htmlFor="realism">Realism</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="script" name="style" value={this.state.script} onChange={this.handleChange}/>
-										<label htmlFor="script">Script</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="traditional" name="style" value={this.state.traditional} onChange={this.handleChange}/>
-										<label htmlFor="traditional">Traditional</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="tribal" name="style" value={this.state.tribal} onChange={this.handleChange}/>
-										<label htmlFor="tribal">Tribal</label>
-									</div>
-									<div className="form-checklist--label">
-										<input type="checkbox" id="watercolour" name="style" value={this.state.watercolour} onChange={this.handleChange}/>
-										<label htmlFor="watercolour">Watercolour</label>
-									</div>
-								</section>
-							</section>
-						</section>
-							<input type="submit" value="submit artist"/>
-					</section>
-					</form>
 				
 					<div className="section fp-auto-height flex-container-parent">
 						<StyleChecklist toggleFilter={this.toggleFilter}/>
@@ -243,10 +250,6 @@ class App extends React.Component {
 			// </div>
 		)
 	}
-
-	// <div className="section fp-auto-height stylechecklist-filteredlist">
-	// 	<FilteredList artists={this.state.artists} filters={this.state.filters}/>
-	// </div>
 
 	componentDidMount(){
 		dbRef.on("value", (snapshot) => {
@@ -260,15 +263,12 @@ class App extends React.Component {
 	}
 }
 
-// <ArtistsList artists={this.state.artists}/>
-
 class StyleChecklist extends React.Component {
 	render() {
 		return (
 			<div className="flex-container">
-
 				<div className="stylechecklist">
-					<h2>my style checklist</h2>
+					<h2>filter by category</h2>
 					
 					<div className="stylechecklist-filters">
 
@@ -342,6 +342,7 @@ class StyleChecklist extends React.Component {
 							<label>Watercolour</label>
 						</div>
 					</div>
+					<p><a href="#forthPage">go to filtered list</a></p>
 				</div>
 			</div>
 		)
@@ -379,33 +380,23 @@ class ArtistListItem extends React.Component {
 	}
 }
 
-// filtered list component
 class FilteredList extends React.Component {
 	render() {
-		//filteredList is a variable that will store an ARRAY of all the ARTISTS with the matching STYLES
-		//filter through artists (master list)
 		const filteredList = this.props.artists.filter(artist => {
-			// isMatched is either true or false
 			var isMatched;
-			//loop through each of the STYLES in the FILTERED ARRAY
-			//["Blackwork","Ignorant", "Handpoke", "Linework"]
-			this.props.filters.forEach(filteredStyle => {
-				// if the artist has matching style
+					this.props.filters.forEach(filteredStyle => {
 				if (artist[filteredStyle]) {
-				//set isMatched to true
 					isMatched = true;
 				};
 			})
-			//if there is a match, then add artist to filteredList array
 			return isMatched;
 		})
-
 		return (
 			<div className="flex-container">
 				<h2 className="stylechecklist-filteredlist--title">my filtered list</h2>
 				
 				<div className="links">
-					<div className="link-style"><a href="#thirdPage">back to style checklist</a></div>
+					<div className="link-style"><a href="#thirdPage">back to filter by category</a></div>
 					<div className="link-top"><a href="#firstPage">back to top</a></div>
 				</div>
 				
@@ -416,30 +407,4 @@ class FilteredList extends React.Component {
 		)
 	}
 }
-
-
-// displaying first component of artist listings
-// class ArtistsList extends React.Component {
-// 	render() {
-// 		console.log(this.props.artists)
-// 		console.log(Array.isArray(this.props.artists))
-// 		return (
-// 			<ul className="section artistInfo">
-// 				{
-// 					this.props.artists.map((artist, index) => { 
-// 						return (
-// 							<ArtistListItem artist={artist} key={index}/>
-// 						)
-// 					})
-// 				}
-// 			</ul>
-// 		)
-// 	}
-// }
-
-
 ReactDOM.render(<App/>, document.getElementById("app"));
-
-
-// <ul className="stylechecklist-filteredlist--artistlist">
-// </ul>
