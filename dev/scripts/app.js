@@ -148,11 +148,12 @@ class App extends React.Component {
 				<div id="fullpage">
 
 					<div className="section title">
-						<h1>inkedin</h1>
-						<p><a href="#secondPage">submit an artist</a></p>
-						<p><a href="#thirdPage">find an artist</a></p>
-
-						<i className="fa fa-arrow-circle-down fa-3x"></i>
+						<div className="title-container">
+							<h1>inkedin</h1>
+							<p><a href="#secondPage">submit an artist</a></p>
+							<p><a href="#thirdPage">find an artist</a></p>
+							<i className="fa fa-arrow-circle-down fa-3x"></i>
+						</div>
 					</div>
 
 					<div className="section form">

@@ -27,19 +27,22 @@ body {
 	text-decoration: none;
 	font-size: 16px;
 	text-align: center;
-	p {
-		font-size: 36px;
-		font-weight: bold;
-	}
-	h1 {
-		opacity: 0.9;
-		color: #577270;
-		font-size: 20vw;
-		margin: 0;
-	}
-	.fa {
-		color: #577270;
-		
+	.title-container {
+		padding-top: 100px;
+		p {
+			font-size: 36px;
+			font-weight: bold;
+		}
+		h1 {
+			opacity: 0.9;
+			color: #577270;
+			font-size: 20vw;
+			margin: 0;
+		}
+		.fa {
+			color: #577270;
+			
+		}
 	}
 }
 

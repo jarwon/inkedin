@@ -151,16 +151,18 @@ body {
   text-decoration: none;
   font-size: 16px;
   text-align: center; }
-  .title p {
-    font-size: 36px;
-    font-weight: bold; }
-  .title h1 {
-    opacity: 0.9;
-    color: #577270;
-    font-size: 20vw;
-    margin: 0; }
-  .title .fa {
-    color: #577270; }
+  .title .title-container {
+    padding-top: 100px; }
+    .title .title-container p {
+      font-size: 36px;
+      font-weight: bold; }
+    .title .title-container h1 {
+      opacity: 0.9;
+      color: #577270;
+      font-size: 20vw;
+      margin: 0; }
+    .title .title-container .fa {
+      color: #577270; }
 
 h2 {
   color: #D5DFE1;

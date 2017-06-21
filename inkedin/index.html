@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>inkedin - tattoo artists in toronto</title>
+	<link rel="stylesheet" type="text/css" href="/public/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="/dev/scripts/jquery.fullPage.min.js"/>
+	<link rel="stylesheet" href="/dev/styles/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Jaldi:400,700|Roboto:100" rel="stylesheet">
+
+</head>
+<body>
+	<div id="app">
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+	<script type="text/javascript" src="dev/scripts/vendors/scrolloverflow.min.js"></script>
+	<script src="dev/scripts/jquery.fullPage.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('#fullpage').fullpage({
+				//Navigation
+				menu: '#menu',
+				lockAnchors: false,
+				anchors:["firstPage", "secondPage", "thirdPage", "forthPage"],
+				navigation: false,
+				navigationPosition: 'right',
+				//Scrolling
+				autoScrolling: true,
+				fitToSection: false,
+				fitToSectionDelay: 1000,
+				scrollBar: false,
+				offsetSections: false,
+				fadingEffect: false,
+				normalScrollElements: ".stylechecklist-filteredlist",
+				scrollOverflow: false,
+				scrollOverflowReset: false,
+				scrollOverflowOptions: false,
+			});
+	});
+	</script>
+
+	<script src="/public/scripts/app.js"></script>
+</body>
+</html>
